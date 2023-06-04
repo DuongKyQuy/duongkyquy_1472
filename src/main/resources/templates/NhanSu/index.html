@@ -36,9 +36,9 @@
       <td th:text="${nhanvien.phongBan.ten_phong}"></td>
       <td th:text="${nhanvien.luong}"></td>
       <td>
-        <a th:href="@{/nhansu/edit/{id}(id=${nhanvien.ma_nv})}"><button><img th:src="@{/images/edit.png}" style="width: 30px; height: 30px">Edit</button></a>
+        <a th:href="@{/nhansu/edit/{id}(id=${nhanvien.ma_nv})}"><button><img th:src="@{/images/edit.png}" style="width: 30px; height: 30px"></button></a>
         <form th:action="@{/nhansu/delete/{id}(id=${nhanvien.ma_nv})}" method="post" onsubmit="return confirm('Are you sure?')">
-          <button type="submit"><img th:src="@{/images/remove.png}" style="width: 30px; height: 30px">Delete</button>
+          <button type="submit"><img th:src="@{/images/remove.png}" style="width: 30px; height: 30px"></button>
         </form>
       </td>
     </tr>
