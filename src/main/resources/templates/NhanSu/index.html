@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>DUONG KY QUY-2080601472</title>
+
+
+  <th:block th:replace="layout :: link-css"></th:block>
+</head>
+<body>
+<th:block th:replace="layout :: header"></th:block>
+<div class="container">
+  <h1 th:text=${title}></h1>
+
+  <a href="nhansu/create">
+    <button class="btn btn-primary" >CREATE</button>
+  </a>
+  <table class="table">
+    <tr style="background-color:green">
+      <th>Mã Nhân Viên</th>
+      <th>Tên Nhân Viên</th>
+      <th>Giới Tính</th>
+      <th>Nơi Sinh</th>
+      <th>Tên Phòng</th>
+      <th>Lương</th>
+      <th>Action</th>
+    </tr>
+    <tr th:each="nhanvien : ${listNhanVien}">
+      <td th:text="${nhanvien.ma_nv}"></td>
+      <td th:text="${nhanvien.ten_nv}"></td>
+      <td>
+        <img th:if="${nhanvien.phai == 'Nam'}" th:src="@{/images/men.png}" style="width: 100px; height: 100px"/>
+        <img th:if="${nhanvien.phai == 'Nữ'}" th:src="@{/images/women.png}" style="width: 100px; height: 100px"/>
+      </td>
+      <td th:text="${nhanvien.noi_sinh}"></td>
+      <td th:text="${nhanvien.phongBan.ten_phong}"></td>
+      <td th:text="${nhanvien.luong}"></td>
+      <td>
+        <a th:href="@{/nhansu/edit/{id}(id=${nhanvien.ma_nv})}"><button><img th:src="@{/images/edit.png}" style="width: 30px; height: 30px">Edit</button></a>
+        <form th:action="@{/nhansu/delete/{id}(id=${nhanvien.ma_nv})}" method="post" onsubmit="return confirm('Are you sure?')">
+          <button type="submit"><img th:src="@{/images/remove.png}" style="width: 30px; height: 30px">Delete</button>
+        </form>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<th:block th:replace="layout :: footer"></th:block>
+</body>
+</html>
